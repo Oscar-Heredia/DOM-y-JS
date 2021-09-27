@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+  <title>Document</title>
+</head>
+<body>
+  <div class="container">
+    <header class="text-center mt-4 mb-3">
+      <h1>Registros de articulos 
+      </h1>
+    </header>
+    <div class="row">
+      <div class="col-md-5 mt-4">
+        <div class="text-center"><h2>Producto</h2></div>
+        <form id="form">
+          <div class="mb-3">
+            <label for="nombre" class="form-label">Código</label>
+            <input type="text" class="form-control" id="nombre" placeholder="123">
+            <input type="hidden" class="form-control" id="registroId">
+          </div>
+          <div class="mb-3">
+            <label for="url" class="form-label">Nombre</label>
+            <input type="text" class="form-control" id="url" placeholder="Lapíz">
+          </div>
+          <div class="mb-3">
+            <label for="pais" class="form-label">Precio</label>
+            <input type="text" class="form-control" id="pais" placeholder="$">
+          </div>
+          <div class="mb-3">
+            <label for="efectos" class="form-label">Cantidad</label>
+            <input type="text" class="form-control" id="efectos" placeholder="12">
+          </div>
+          <div class="col-md-12">
+            <button class="btn btn-primary" type="submit" id="guardar">Crear registro</button>
+           
+          </div>
+        </form>
+      </div>
+
+      <!--<div class="col-md-7 mt-4">
+        <div class="text-center"><h2>Productos registrados</h2></div>
+        <div class="row">
+          <div class="col-md-12 my-5">
+            <form class="row gy-2 gx-3 align-items-center" id="buscador">
+              <div class="col-auto">
+                <label class="visually-hidden" for="campos">Preference</label>
+                <select class="form-select" id="campos">
+                  <option selected>Selecciona...</option>
+                  <option value="nombre">Nombre</option>
+                  <option value="url">URL de imagen</option>
+                  <option value="origen">Origen</option>
+                  <option value="efectos">Efectos</option>
+                </select>
+              </div>
+              <div class="col-auto">
+                <label class="visually-hidden" for="campoBuscar">Name</label>
+                <input type="text" class="form-control" id="campoBuscar" placeholder="Buscar...">
+              </div>
+              <div class="col-auto">
+                <button type="submit" class="btn btn-primary">Buscar</button>
+                <a href="" class="btn btn-primary" id="mostrarTodos">Mostrar todos</a>
+              </div>
+            </form>
+          </div>
+        </div>
+      -->
+      
+        <div class="table-responsive">
+          <table class="table table-striped" id="tabla">
+            <thead>
+              <tr>
+                <th scope="col">Código</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Precio</th>
+                <th scope="col">Cantidad</th>
+                <th scope="col" colspan="2">Acciones</th>
+              </tr>
+            </thead>
+            <tbody>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    
+      <a href="#" class="btn btn-danger" id="eliminarTodos">Eliminar todos</a>
+
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+  <script src="./main.js"></script>
+  <script>
+    const form = document.getElementById('form');
+    const eliminarTodos = document.getElementById('eliminarTodos');
+    form.onsubmit = registro;
+    eliminarTodos.onclick = destruirRegistros;
+
+    const buscador = document.getElementById('buscador');
+    let tabla = new Registros;
+    tabla.mostrarListaDeRegistros();
+    buscador.onsubmit = ejecutarBusqueda;
+    let buscarTodos = document.getElementById('mostrarTodos');
+    buscarTodos.onclick = tabla.mostrarListaDeRegistros();
+  </script>
+</body>
+</html>
